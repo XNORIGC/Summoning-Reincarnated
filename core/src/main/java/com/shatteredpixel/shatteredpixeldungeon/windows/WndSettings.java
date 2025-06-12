@@ -174,11 +174,6 @@ public class WndSettings extends WndTabbed {
 			}
 
 			@Override
-			protected void onClick() {
-				//do nothing
-			}
-
-			@Override
 			protected void createChildren() {
 				super.createChildren();
 				switch(Messages.lang().status()){
@@ -189,7 +184,6 @@ public class WndSettings extends WndTabbed {
 						icon.hardlight(1.5f, 0.75f, 0f);
 						break;
 				}
-				icon.hardlight(0x1a1a1a);
 			}
 
 		};
@@ -1188,18 +1182,36 @@ public class WndSettings extends WndTabbed {
 					@Override
 					protected void onClick() {
 						super.onClick();
+						String[] summoning = currLang.summoning();
 						String[] reviewers = currLang.reviewers();
 						String[] translators = currLang.translators();
 
-						int totalCredits = 2*reviewers.length + translators.length;
+						int totalCredits = summoning.length + 2*reviewers.length + translators.length;
 						int totalTokens = 2*totalCredits; //for spaces
 
 						//additional space for titles, and newline chars
+						if (summoning.length > 0) totalTokens+=6;
 						if (reviewers.length > 0) totalTokens+=6;
 						totalTokens +=4;
 
 						String[] entries = new String[totalTokens];
 						int index = 0;
+						if (summoning.length > 0){
+							entries[0] = "_";
+							entries[1] = Messages.titleCase(Messages.get(LangsTab.this, "summoning"));
+							entries[2] = "_";
+							entries[3] = "\n";
+							index = 4;
+							for (int i = 0; i < summoning.length; i++){
+								entries[index] = summoning[i];
+								if (i < summoning.length-1) entries[index] += ", ";
+								entries[index+1] = " ";
+								index += 2;
+							}
+							entries[index] = "\n";
+							entries[index+1] = "\n";
+							index += 2;
+						}
 						if (reviewers.length > 0){
 							entries[0] = "_";
 							entries[1] = Messages.titleCase(Messages.get(LangsTab.this, "reviewers"));

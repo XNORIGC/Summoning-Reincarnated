@@ -23,11 +23,11 @@ allprojects {
     def details = versionDetails()
 
     ext {
-        appName = 'Summoning PD Reincarnated'
-        appPackageName = 'com.trashboxbobylev.resummoningpixeldungeon'
+        appName = 'Summoning PD Reincarnated CN'
+        appPackageName = 'com.trashboxbobylev.resummoningpixeldungeon.cn'
 
         appVersionCode = 835
-        appVersionName = 'ReInc-0.5.2-' + details.gitHash.substring(0, 7)
+        appVersionName = 'ReInc-0.5.2-CN'
 
         appJavaCompatibility = JavaVersion.VERSION_1_8
 
