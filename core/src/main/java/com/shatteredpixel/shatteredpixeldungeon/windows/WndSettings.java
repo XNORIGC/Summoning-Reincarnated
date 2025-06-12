@@ -1197,11 +1197,10 @@ public class WndSettings extends WndTabbed {
 						String[] entries = new String[totalTokens];
 						int index = 0;
 						if (summoning.length > 0){
-							entries[0] = "_";
-							entries[1] = Messages.titleCase(Messages.get(LangsTab.this, "summoning"));
-							entries[2] = "_";
-							entries[3] = "\n";
-							index = 4;
+							entries[index++] = "_";
+							entries[index++] = Messages.titleCase(Messages.get(LangsTab.this, "summoning"));
+							entries[index++] = "_";
+							entries[index++] = "\n";
 							for (int i = 0; i < summoning.length; i++){
 								entries[index] = summoning[i];
 								if (i < summoning.length-1) entries[index] += ", ";
@@ -1213,11 +1212,10 @@ public class WndSettings extends WndTabbed {
 							index += 2;
 						}
 						if (reviewers.length > 0){
-							entries[0] = "_";
-							entries[1] = Messages.titleCase(Messages.get(LangsTab.this, "reviewers"));
-							entries[2] = "_";
-							entries[3] = "\n";
-							index = 4;
+							entries[index++] = "_";
+							entries[index++] = Messages.titleCase(Messages.get(LangsTab.this, "reviewers"));
+							entries[index++] = "_";
+							entries[index++] = "\n";
 							for (int i = 0; i < reviewers.length; i++){
 								entries[index] = reviewers[i];
 								if (i < reviewers.length-1) entries[index] += ", ";
